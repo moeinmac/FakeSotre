@@ -1,0 +1,33 @@
+.product{
+     display: flex;
+     flex-direction: column;
+     background-color: #fff;
+     padding: .5em;
+     align-items: center;
+     justify-content: space-between;
+     gap: 1em;
+     border-radius: .5em;
+}
+.product-img{
+     width: 170px;
+
+}
+.product-title{cursor: pointer;}
+
+.product-details{
+     width: 100%;
+     display: flex;
+     padding: 0 1em;
+     justify-content: space-between;
+}
+.product-buttons{
+     display: flex;
+     width: 100%;
+     padding: .5em 1em;
+     justify-content: space-between;
+}
+.product-buttons button{
+     font-size: 1.3rem;
+     cursor: pointer;
+     color: var(--bColor);
+}

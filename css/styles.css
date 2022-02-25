@@ -1,5 +1,6 @@
 @import url('fonts.css');
-
+@import url('header.css');
+@import url('product.css');
 *{
      margin: 0; padding: 0;
      box-sizing: border-box;
@@ -20,67 +21,18 @@ img{
 :root{
      --pColor : #aaaac7;
      --gColor : #e6e6e6;
-}
-/* Mobile  Navigation */
-
-nav{
-     display: flex;
-     font-size: .9rem;
-     flex-direction: column;
-     padding: .5em;
-     gap: 1em;
+     --gColor2 : #bebebe;
+     --bColor : #131313;
 }
 
-.menu{
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
-     background-color: #f5f5f5;
-     border-radius: 1em;
-     border:1px solid var(--pColor);
-}
-.searchContainer{
-     border-right: 1px solid var(--pColor);
-     padding: .5em 1em;
-     width: 100%;
-     display: flex;
-     align-items: center;
-}
-.searchContainer input{
-     background-color: transparent;
-     width: 100%;
-}
 
-.userButtons{
-     display: flex;
-     align-items: center;
-     gap: 1em;
-     padding:.3em 1em;
-     background-color: #e6e6e6;
-     border-radius: 0 1em 1em 0;
-     font-size: 1.2rem;
-}
-.userButtons > *{
-     cursor: pointer;
-}
-.cartContainer p{
-     display: none;
-}
-
-.category{
-     order: 2;
+main{
      display: grid;
-     grid-template-columns: repeat(3,1fr);
-     gap: 1em;
+     justify-content: center;
+     grid-template-columns: repeat(2,1fr);
+     gap: 2em;
      padding: 1em;
-     justify-items: center;
-     background-color: var(--gColor);
-     border: 1px solid var(--pColor);
-     border-radius: 1em;
-}
-.category li{
-     cursor: pointer;
-     display: flex;
-     align-items: center;
-     gap: .5em;
+     background-color: var(--gColor2);
+     transition: .5s;
+     font-size: .9rem;
 }
