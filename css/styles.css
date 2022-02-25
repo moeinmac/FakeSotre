@@ -25,7 +25,12 @@ img{
      --gColor2 : #bebebe;
      --bColor : #131313;
 }
-
+header{
+     padding: .5em;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+}
 
 main{
      display: grid;
@@ -37,20 +42,10 @@ main{
      transition: .5s;
      font-size: .9rem;
 }
-.aside-container{
-     position: absolute;
-     top: 77.78px; right: 0;
-     display: flex;
-     width: 450px;
-     padding: 1em;
-     flex-direction: column;
-     gap: 1em;
-     color: #131313;
-     background-color: #e6e6e6;
-     transition:ease-in-out .5s;
-     border-radius: 0 0 0 .5em;
-
+main.open{
+     filter: brightness(60%);
 }
-.aside-container.show{
-     top: 77.78px;
+aside{
+     width: 100%;
+     position: relative;
 }

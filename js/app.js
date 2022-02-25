@@ -6,12 +6,15 @@ const main = document.querySelector('main');
 const search = document.querySelector('.searchContainer input');
 const navItems = document.querySelectorAll('nav ul');
 const cartCounter = document.querySelector('.cartCounter')
-const asideContainer = document.querySelector('.aside-container');
+const productCartContainer = document.querySelector('.product-cart-container');
+const menu = document.querySelector('.menu');
+const cartContainer = document.querySelector('.cartContainer')
 
 // ! EventListener
 document.addEventListener('DOMContentLoaded',getProducts);
 search.addEventListener('input' , searchProducts);
 navItems.forEach(navItem => navItem.addEventListener('click',filterProducts));
+cartContainer.addEventListener('click',openCartMenu);
 
 // ? Get All Products
 async function getProducts() {
@@ -116,7 +119,13 @@ async function addToCartButton(ev) {
                <i class="fa-solid fa-trash-can"></i>
           </div>
      `
-     const cartFooter = document.querySelector('.cart-footer');
-     asideContainer.insertBefore(productCart,cartFooter);
+     const cartMain = document.querySelector('.cart-main');
+     cartMain.appendChild(productCart)
      totalPrice(cartFooter.childNodes[1],productAdded.price);
+}
+
+function openCartMenu() {
+     productCartContainer.classList.toggle('open')
+     main.classList.toggle('open')
+     menu.classList.toggle('open')
 }

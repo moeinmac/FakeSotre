@@ -1,8 +1,8 @@
 nav{
+     width: 100%;
      display: flex;
      font-size: .9rem;
      flex-direction: column;
-     padding: .5em;
      gap: 1em;
 }
 
@@ -13,7 +13,9 @@ nav{
      background-color: #f5f5f5;
      border-radius: 1em;
      border:1px solid var(--pColor);
+     transition: .5s;
 }
+
 .searchContainer{
      border-right: 1px solid var(--pColor);
      padding: .5em 1em;
@@ -38,10 +40,17 @@ nav{
 .userButtons > *{
      cursor: pointer;
 }
+
+.menu.open{
+     border-radius: 1em 1em 0 0;
+}
+.menu.menu.open .userButtons{
+     border-radius: 0 1em 0 0;
+}
+
 .cartContainer p{
      display: none;
 }
-
 .category{
      order: 2;
      display: grid;
