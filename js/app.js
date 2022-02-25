@@ -5,6 +5,8 @@ import LimitText from "./LimitText.js";
 const main = document.querySelector('main');
 const search = document.querySelector('.searchContainer input');
 const navItems = document.querySelectorAll('nav ul');
+const cartCounter = document.querySelector('.cartCounter')
+const asideContainer = document.querySelector('.aside-container');
 
 // ! EventListener
 document.addEventListener('DOMContentLoaded',getProducts);
@@ -83,4 +85,38 @@ function productButtons(ev) {
           case "addto-favorite":
                break;
      }
+}
+
+async function addToCartButton(ev) {
+     const res = await fetch('products/products.json')
+     const data = await res.json()
+     const productAdded = data[ev.path[2].getAttribute('data-id')]
+
+     // Count the number of products in the cart
+     cartCounter.innerHTML = eval(cartCounter.innerHTML) + 1
+
+     // Create Cart For Each Product
+     const productCart = document.createElement('div');
+     productCart.classList.add('product-cart')
+     productCart.classList.add('product')
+     productCart.innerHTML = `
+     <div class="product-cart-img">
+          <img src="${productAdded.image}" alt="">
+          </div>
+          <div class="product-details product-cart-detail">
+               <p class="product-title">${LimitText(productAdded.title,3)}</p>
+               <p class="product-price">${productAdded.price}$</p>
+          </div>
+          <div class="product-cart-buttons">
+               <div class="product-cart-controller">
+                    <i class="fa-solid fa-chevron-up"></i>
+                    <span>0</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+               </div>
+               <i class="fa-solid fa-trash-can"></i>
+          </div>
+     `
+     const cartFooter = document.querySelector('.cart-footer');
+     asideContainer.insertBefore(productCart,cartFooter);
+     totalPrice(cartFooter.childNodes[1],productAdded.price);
 }
