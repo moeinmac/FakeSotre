@@ -1,5 +1,6 @@
 import LimitText from "./LimitText.js";
 
+
 // ! Assign To DOM
 const main = document.querySelector('main');
 const search = document.querySelector('.searchContainer input');
@@ -41,6 +42,8 @@ function createProduct(products) {
                     <button class="addto-favorite fa-light fa-heart"></button>
                </div>
           `
+     // To Check Click Buttons For Each Products
+     productElm.addEventListener('click',productButtons)
      main.appendChild(productElm)
      })
 }
@@ -64,4 +67,20 @@ async function filterProducts(ev){
      const filteredProducts = data.filter(product => product.category === ev.target.innerHTML.toLowerCase())
      if(filterProducts.length ==0) return
      createProduct(filteredProducts)
+}
+
+// ? Handle Product Button Click
+function productButtons(ev) {
+     ev.target.disabled = true
+     switch (ev.target.classList[0]) {
+          case "addto-cart":
+               ev.target.classList.remove('fa-light','fa-cart-circle-plus');
+               ev.target.classList.add('fa-duotone','fa-cart-circle-check');
+               addToCartButton(ev)
+               break;
+          case "addto-description":
+               break;
+          case "addto-favorite":
+               break;
+     }
 }
