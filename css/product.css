@@ -8,10 +8,10 @@
      gap: 1em;
      border-radius: .5em;
 }
-.product-img{
-     width: 170px;
+/* .product-img{
+     width: 100%;
 
-}
+} */
 .product-title{cursor: pointer;}
 
 .product-details{
