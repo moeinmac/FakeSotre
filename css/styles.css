@@ -28,6 +28,7 @@ nav{
      font-size: .9rem;
      flex-direction: column;
      padding: .5em;
+     gap: 1em;
 }
 
 .menu{
@@ -48,7 +49,6 @@ nav{
 .searchContainer input{
      background-color: transparent;
      width: 100%;
-
 }
 
 .userButtons{
