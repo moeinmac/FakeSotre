@@ -3,10 +3,12 @@ import LimitText from "./LimitText.js";
 // ! Assign To DOM
 const main = document.querySelector('main');
 const search = document.querySelector('.searchContainer input');
+const navItems = document.querySelectorAll('nav ul');
 
 // ! EventListener
 document.addEventListener('DOMContentLoaded',getProducts);
 search.addEventListener('input' , searchProducts);
+navItems.forEach(navItem => navItem.addEventListener('click',filterProducts));
 
 // ? Get All Products
 async function getProducts() {
@@ -51,5 +53,15 @@ async function searchProducts() {
      const res = await fetch('products/products.json')
      const data = await res.json()
      const filteredProducts = data.filter(product => product.title.toLowerCase().includes(search.value))
+     createProduct(filteredProducts)
+}
+
+// ? Filter Products
+
+async function filterProducts(ev){
+     const res = await fetch('products/products.json')
+     const data = await res.json()
+     const filteredProducts = data.filter(product => product.category === ev.target.innerHTML.toLowerCase())
+     if(filterProducts.length ==0) return
      createProduct(filteredProducts)
 }
