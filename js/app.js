@@ -2,9 +2,11 @@ import LimitText from "./LimitText.js";
 
 // ! Assign To DOM
 const main = document.querySelector('main');
+const search = document.querySelector('.searchContainer input');
 
 // ! EventListener
 document.addEventListener('DOMContentLoaded',getProducts);
+search.addEventListener('input' , searchProducts);
 
 // ? Get All Products
 async function getProducts() {
@@ -14,6 +16,11 @@ async function getProducts() {
 }
 
 function createProduct(products) {
+     if(products.length == 0) {
+          main.innerHTML = `Sorry There's not available product... :(`
+          return
+     } 
+     main.innerHTML = ``
      products.forEach(product => {
           const productElm = document.createElement('div');
           productElm.classList.add('product')
@@ -34,4 +41,15 @@ function createProduct(products) {
           `
      main.appendChild(productElm)
      })
+}
+
+
+// ? Search Products 
+
+async function searchProducts() {
+     if(search.value.length < 2) return
+     const res = await fetch('products/products.json')
+     const data = await res.json()
+     const filteredProducts = data.filter(product => product.title.toLowerCase().includes(search.value))
+     createProduct(filteredProducts)
 }
