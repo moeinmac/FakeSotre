@@ -23,6 +23,10 @@ loginButton.addEventListener('click',loginUser)
 
 // ? Get All Products
 async function getProducts() {
+     if(localStorage.getItem('login')){
+          const loginData = JSON.parse(localStorage.getItem('login'))
+          saveLoginUser(loginData.username,loginData.date)
+     }
      const res = await fetch('products/products.json')
      const data = await res.json()
      createProduct(data)
@@ -175,4 +179,25 @@ function loginUser() {
      }).catch((err) => {
           
      });
+}
+
+function saveLoginUser(username,time) {
+     userIcon.classList.toggle('fa-user-vneck')
+     userIcon.classList.toggle('fa-user-check')
+     loginContainer.innerHTML =  `
+     <div class="logged-items">
+          <i class="fa-light fa-circle-user"></i>
+          <p>Hey <span>${username}</span> , welcome!</p>
+     </div>
+     <div class="logged-items">
+          <i class="fa-light fa-clock"></i>
+          <p>Last Login : <span>${new Date(time).toLocaleString()}</span></p>
+     </div>
+     <div class="logged-buttons">
+          <button class="changePass-button">Change Password</button>
+          <button class="logout-button">Logout</button>
+     </div>
+     `
+     document.querySelector('.logout-button').addEventListener('click',logout)
+
 }

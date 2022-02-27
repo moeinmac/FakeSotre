@@ -26,3 +26,42 @@
      background-color: #aab4c7;
      border-radius: 1em;
 }
+.logged-items{
+     display: flex;
+     align-items: center;
+     gap: 1em;
+     /* padding: .5em 0; */
+     /* font-size: .95rem; */
+}
+.logged-items span{
+     padding: .3em;
+     background-color: #131313;
+     color: #aab4c7;
+     border-radius: .3em;
+     user-select: none;
+}
+.logged-items i{
+     font-size: 1.4rem;
+}
+.logged-buttons{
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     gap: .5em;
+}
+.logged-buttons button{
+     cursor: pointer;
+     padding:.5em 1em;
+     border-radius: .5em;
+}
+.aside-container.logged{
+     gap: 1.5em;
+}
+.changePass-button{
+     background-color: #aaaac7;
+}
+.logout-button{
+     border:1px solid #131313;
+     color: #131313;
+     background-color: transparent;
+}
