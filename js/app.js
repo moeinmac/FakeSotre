@@ -5,10 +5,12 @@ import LimitText from "./LimitText.js";
 const main = document.querySelector('main');
 const search = document.querySelector('.searchContainer input');
 const navItems = document.querySelectorAll('nav ul');
-const cartCounter = document.querySelector('.cartCounter')
+const cartCounter = document.querySelector('.cartCounter');
+
 const productCartContainer = document.querySelector('.product-cart-container');
 const menu = document.querySelector('.menu');
 const cartContainer = document.querySelector('.cartContainer');
+
 const loginContainer = document.querySelector('.login-container');
 const userIcon = document.querySelector('.user-icon')
 const loginButton = document.querySelector('.login-button')
@@ -32,6 +34,7 @@ async function getProducts() {
      createProduct(data)
 }
 
+// ? Create Products
 function createProduct(products) {
      if(products.length == 0) {
           main.innerHTML = `Sorry There's not available product... :(`
@@ -64,7 +67,6 @@ function createProduct(products) {
 
 
 // ? Search Products 
-
 async function searchProducts() {
      if(search.value.length < 2) return
      const res = await fetch('products/products.json')
@@ -74,7 +76,6 @@ async function searchProducts() {
 }
 
 // ? Filter Products
-
 async function filterProducts(ev){
      const res = await fetch('products/products.json')
      const data = await res.json()
@@ -99,6 +100,7 @@ function productButtons(ev) {
      }
 }
 
+// ? Add Products To Cart
 async function addToCartButton(ev) {
      const res = await fetch('products/products.json')
      const data = await res.json()
@@ -133,6 +135,7 @@ async function addToCartButton(ev) {
      totalPrice(cartFooter.childNodes[1],productAdded.price);
 }
 
+// ? Open Cart Menu
 function openCartMenu() {
      productCartContainer.classList.toggle('open')
      loginContainer.classList.remove('open')
@@ -143,6 +146,8 @@ function openCartMenu() {
      menu.classList.toggle('open-cart')
      menu.classList.remove('open-login')
 }
+
+// ? Open Login Menu
 function openLoginMenu() {
      loginContainer.classList.toggle('open')
      productCartContainer.classList.remove('open')
@@ -154,6 +159,7 @@ function openLoginMenu() {
      menu.classList.remove('open-cart')
 }
 
+// ? Login User With Api
 function loginUser() {
      const usernameValue = document.querySelector('.username').value;
      const passwordValue = document.querySelector('.password').value;
@@ -181,6 +187,7 @@ function loginUser() {
      });
 }
 
+// ? Save User
 function saveLoginUser(username,time) {
      userIcon.classList.toggle('fa-user-vneck')
      userIcon.classList.toggle('fa-user-check')
@@ -199,5 +206,25 @@ function saveLoginUser(username,time) {
      </div>
      `
      document.querySelector('.logout-button').addEventListener('click',logout)
+}
 
+// ? Logout User and Fake TimeOut
+function logout() {
+     localStorage.removeItem('login')
+     userIcon.classList.toggle('fa-user-vneck')
+     userIcon.classList.toggle('fa-user-check')
+     document.querySelector('.logout-button').innerHTML = `Logging out...`
+     setTimeout(() => {
+          loginContainer.innerHTML = `
+          <div class="inputs">
+          <i class="fa-light fa-user"></i>
+          <input type="text" placeholder="Username" class="username">
+          </div>
+          <div class="inputs">
+               <i class="fa-light fa-lock-keyhole"></i>
+               <input type="password" placeholder="Password" class="password">
+          </div>
+          <input type="button" value="Login" class="login-button">
+     `
+     }, 2000);
 }
