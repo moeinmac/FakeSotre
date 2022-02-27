@@ -1,8 +1,7 @@
-.product-cart-container{
+.product-cart-container,.aside-items{
      position: absolute;
      top: -1000px; right: 0;
      width: 100%; max-height: 400px;
-
      display: flex;
      padding: 1em 0;
      flex-direction: column;
@@ -14,7 +13,7 @@
      border:1px solid var(--pColor);
      z-index: 4;
 }
-.product-cart-container.open{
+.aside-items.open{
      top: -107.7px;
 }
 .product-cart-container h3{
@@ -30,7 +29,6 @@
      overflow: auto;
 }
 .product-cart{
-
      flex-direction: row;
      font-size: .9rem;
      width: 100%;
