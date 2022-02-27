@@ -8,13 +8,16 @@ const navItems = document.querySelectorAll('nav ul');
 const cartCounter = document.querySelector('.cartCounter')
 const productCartContainer = document.querySelector('.product-cart-container');
 const menu = document.querySelector('.menu');
-const cartContainer = document.querySelector('.cartContainer')
+const cartContainer = document.querySelector('.cartContainer');
+const loginContainer = document.querySelector('.login-container');
+const userIcon = document.querySelector('.user-icon')
 
 // ! EventListener
 document.addEventListener('DOMContentLoaded',getProducts);
 search.addEventListener('input' , searchProducts);
 navItems.forEach(navItem => navItem.addEventListener('click',filterProducts));
 cartContainer.addEventListener('click',openCartMenu);
+userIcon.addEventListener('click',openLoginMenu)
 
 // ? Get All Products
 async function getProducts() {
@@ -126,6 +129,21 @@ async function addToCartButton(ev) {
 
 function openCartMenu() {
      productCartContainer.classList.toggle('open')
-     main.classList.toggle('open')
-     menu.classList.toggle('open')
+     loginContainer.classList.remove('open')
+
+     main.classList.toggle('open-cart')
+     main.classList.remove('open-login')
+
+     menu.classList.toggle('open-cart')
+     menu.classList.remove('open-login')
+}
+function openLoginMenu() {
+     loginContainer.classList.toggle('open')
+     productCartContainer.classList.remove('open')
+
+     main.classList.toggle('open-login')
+     main.classList.remove('open-cart')
+
+     menu.classList.toggle('open-login')
+     menu.classList.remove('open-cart')
 }

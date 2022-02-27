@@ -1,7 +1,10 @@
 .login-container{
      font-size: .9rem;
-     top: -107.7px;
+     top: -10000px;
      padding: 1em;
+}
+.login-container.open{
+     top: -107.7px;
 }
 .inputs{
      padding: .6em;

@@ -1,4 +1,4 @@
-.product-cart-container,.aside-items{
+.aside-items{
      position: absolute;
      top: -1000px; right: 0;
      width: 100%; max-height: 400px;
@@ -13,7 +13,7 @@
      border:1px solid var(--pColor);
      z-index: 4;
 }
-.aside-items.open{
+.product-cart-container.open{
      top: -107.7px;
 }
 .product-cart-container h3{

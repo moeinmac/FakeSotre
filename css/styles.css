@@ -44,7 +44,7 @@ main{
      transition: .5s;
      font-size: .9rem;
 }
-main.open{
+main.open-cart,main.open-login{
      filter: brightness(60%);
 }
 aside{
