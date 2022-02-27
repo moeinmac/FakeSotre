@@ -11,13 +11,15 @@ const menu = document.querySelector('.menu');
 const cartContainer = document.querySelector('.cartContainer');
 const loginContainer = document.querySelector('.login-container');
 const userIcon = document.querySelector('.user-icon')
+const loginButton = document.querySelector('.login-button')
 
 // ! EventListener
 document.addEventListener('DOMContentLoaded',getProducts);
 search.addEventListener('input' , searchProducts);
 navItems.forEach(navItem => navItem.addEventListener('click',filterProducts));
 cartContainer.addEventListener('click',openCartMenu);
-userIcon.addEventListener('click',openLoginMenu)
+userIcon.addEventListener('click',openLoginMenu);
+loginButton.addEventListener('click',loginUser)
 
 // ? Get All Products
 async function getProducts() {
@@ -146,4 +148,31 @@ function openLoginMenu() {
 
      menu.classList.toggle('open-login')
      menu.classList.remove('open-cart')
+}
+
+function loginUser() {
+     const usernameValue = document.querySelector('.username').value;
+     const passwordValue = document.querySelector('.password').value;
+     loginButton.value = 'Logging...'
+     fetch('https://fakestoreapi.com/auth/login', 
+     {
+          method: 'POST',
+          headers: {
+               'Accept': 'application/json',
+               'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+               username : usernameValue,
+               password : passwordValue
+          })
+     })
+     .then((result) => {
+          console.log(result);
+          localStorage.setItem('login',JSON.stringify(
+               {username : usernameValue,date : new Date().getTime()}
+          ))
+          saveLoginUser(usernameValue,new Date().getTime())
+     }).catch((err) => {
+          
+     });
 }
