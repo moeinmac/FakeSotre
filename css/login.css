@@ -30,8 +30,6 @@
      display: flex;
      align-items: center;
      gap: 1em;
-     /* padding: .5em 0; */
-     /* font-size: .95rem; */
 }
 .logged-items span{
      padding: .3em;
@@ -64,4 +62,9 @@
      border:1px solid #131313;
      color: #131313;
      background-color: transparent;
+}
+@media screen and (min-width : 1000px) {
+     .login-container.open.open{
+          top: -13px;
+     }
 }

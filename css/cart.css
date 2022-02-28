@@ -84,3 +84,13 @@
      background-color: #131313;
      cursor: pointer;
 }
+
+@media screen and (min-width : 1000px) {
+     .aside-items{
+          width: 395px;
+          right: 24px;
+     }
+     .product-cart-container.open{
+          top: -13px;
+     }
+}
