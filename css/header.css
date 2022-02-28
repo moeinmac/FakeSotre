@@ -31,6 +31,7 @@ nav{
 .userButtons{
      display: flex;
      align-items: center;
+     align-self: stretch;
      gap: 1em;
      padding:.3em 1em;
      background-color: var(--gColor);
@@ -47,7 +48,9 @@ nav{
 .menu.open-login .userButtons,.menu.open-cart .userButtons{
      border-radius: 0 1em 0 0;
 }
-
+.cartContainer{
+     position: relative;
+}
 .cartContainer p{
      display: none;
 }
@@ -67,4 +70,55 @@ nav{
      display: flex;
      align-items: center;
      gap: .5em;
+     color: #131313;
+}
+
+@media screen and (min-width : 1000px){
+     nav{
+          flex-direction: row;
+          background-color: var(--gColor);
+          justify-content: space-between;
+          align-items: center;
+          padding:.5em 1.5em;
+          font-size: 1rem;
+     }
+     .category{
+          order: 0;
+          display: flex;
+          gap: 2em;
+          border: none;
+
+     }
+     nav ul li{
+          cursor: pointer;
+          transition: border-bottom-color .3s;
+          border-bottom: 1px solid transparent;
+     }
+     .category li:hover{border-bottom-color:var(--pColor)}
+     .menu{
+          font-size: 1.3rem;
+     }
+     .searchContainer{
+          border-right: 1px solid var(--pColor);
+          padding: .5em 1em;
+     }
+     .searchContainer input{
+          background-color: transparent;
+          font-size: 1rem;
+     }
+     .userButtons > *{
+          font-size: 1.9rem;
+     }
+     .cartContainer p{
+          position: absolute;
+          left: 0px;
+          top: -1.5px;
+          font-size: .75rem;
+          width: 26.5px; height: 31px;
+          display: flex !important;
+          justify-content: center;
+          align-items: flex-end;
+          color: #131313;
+     }
+     .cartContainer p{display: block;}
 }
